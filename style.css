@@ -1,0 +1,50 @@
+.carousel-item {
+    height: 400px;
+}
+
+.carousel-item img {
+    height: 100%;
+    object-fit: contain;
+}
+
+.carousel-caption {
+    background-color: rgba(218, 218, 218, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+#formContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.color-option {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.color-option.selected {
+    border: 3px solid #939191;
+}
+
+#noSlides {
+    text-align: center;
+    padding: 40px;
+    margin: 20px auto;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    max-width: 600px;
+}
+
+#carouselContainer {
+    display: none;
+    max-width: 800px;
+    margin: 0 auto;
+}

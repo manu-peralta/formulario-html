@@ -1,11 +1,18 @@
 class Colores {
-    static lista = [
-        { nombre: "Predeterminado", hex: "#000000" },
-        { nombre: "Rojo", hex: "#FF0000" },
-        { nombre: "Verde", hex: "#00FF00" },
-        { nombre: "Azul", hex: "#0000FF" },
-        { nombre: "Amarillo", hex: "#FFFF00" },
-        { nombre: "Naranja", hex: "#FFA500" },
-        { nombre: "Rosa", hex: "#FFC0CB" }
-    ];
+    constructor() {
+        this.lista = [
+            { nombre: "Negro", valor: "#000000" },
+            { nombre: "Rojo", valor: "#FF0000" },
+            { nombre: "Verde", valor: "#00FF00" },
+            { nombre: "Azul", valor: "#0000FF" },
+            { nombre: "Amarillo", valor: "#FFFF00" },
+            { nombre: "Naranja", valor: "#FFA500" },
+            { nombre: "Rosa", valor: "#FFC0CB" },
+            { nombre: "Marron", valor: "#A52A2A" },
+        ];
+    }
+
+    getColores() {
+        return this.lista;
+    }
 }

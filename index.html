@@ -1,119 +1,124 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Formulario con carrusel</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-    </head>
 
-    <body>
-        <div class="container my-4">
-            
-            <h1 class="text-center mb-5">Formulario con carrusel</h1>
-            
-            <div id="formContainer">
-                <form id="formulario" class="filter-form"  >
-                    <div class="mb-3">
-                        <label for="foto" class="form-label">Foto</label>
-                        <input type="file" class="form-control" id="foto" accept="image/*" required>
-                    </div>
-    
-                    <div class="mb-3">
-                        <label for="titulo" class="form-label">Título</label>
-                        <input type="text" class="form-control" id="titulo" required>
-                    </div>
-    
-                    <div class="mb-3">
-                        <label for="subtitulo" class="form-label">Subtítulo</label>
-                        <input type="text" class="form-control" style="color: black;" id="subtitulo" required>
-                      </div>
-    
-                    <div class="mb-4">
-                        <label class="form-label d-block">Color del subtítulo</label>
-                        <div id="colorContainer"></div>
-                        <input type="hidden" id="colorSubtitulo" required>
-                    </div>
-    
-                    <button type="submit" class="btn btn-primary w-100">Agregar al carrusel</button>
-                </form>  
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario con carrusel</title>
 
-            <div class="mt-5" id="carouselContainer">
-                <div id="carouselSlides" class="carousel carousel-dark slide" data-bs-ride="false">
-                    <div class="carousel-inner" id="carouselInner">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
 
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselSlides" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(1);"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselSlides" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(1);"></span>
-                    </button>
+<body>
+    <div class="container my-4">
+
+        <h1 class="text-center mb-5">Formulario con carrusel</h1>
+
+        <div id="formContainer">
+            <form id="formulario" class="filter-form">
+                <div class="mb-3">
+                    <label for="foto" class="form-label">Foto</label>
+                    <input type="file" class="form-control" id="foto" accept="image/*" required>
                 </div>
-            </div>
 
-            <div id="noSlides">
-                <p class="fs-5">No hay imágenes aún.</p>
-                <p class="fs-6">Agrega una imagen para verla en el carrusel.</p>
+                <div class="mb-3">
+                    <label for="titulo" class="form-label">Título</label>
+                    <input type="text" class="form-control" id="titulo" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="subtitulo" class="form-label">Subtítulo</label>
+                    <input type="text" class="form-control" id="subtitulo" required>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label d-block">Color del subtítulo</label>
+                    <div id="colorContainer"></div>
+                    <input type="hidden" id="colorSubtitulo" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Agregar al carrusel</button>
+            </form>
+        </div>
+
+        <div class="mt-5" id="carouselContainer">
+            <div id="carouselSlides" class="carousel carousel-dark slide" data-bs-ride="false">
+                <div class="carousel-inner" id="carouselInner">
+
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselSlides"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(1);"></span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselSlides"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(1);"></span>
+                </button>
             </div>
         </div>
 
-        <script src="colores.js"></script>
-        <script>
-            window.onload = () => {
-                
-                const modeloColores = new Colores();
-                const coloresContainer = document.getElementById('colorContainer');
-                const inputSubtitulo = document.getElementById('subtitulo');
-                
-                modeloColores.getColores().forEach(color => {
-                    const colorDiv = document.createElement('div');
-                    colorDiv.className = 'color-option';
-                    colorDiv.style.backgroundColor = color.valor;
-                    colorDiv.title = color.nombre;
-                    colorDiv.dataset.color = color.valor;
-                    
-                    if (color.valor === '#000000') {
-                        colorDiv.classList.add('selected');
+        <div id="noSlides">
+            <p class="fs-5">No hay imágenes aún.</p>
+            <p class="fs-6">Agrega una imagen para verla en el carrusel.</p>
+        </div>
+    </div>
+
+    <script src="colores.js"></script>
+    <script>
+
+        const modeloColores = new Colores();
+        const coloresContainer = document.getElementById('colorContainer');
+        const inputSubtitulo = document.getElementById('subtitulo');
+
+        modeloColores.getColores().forEach(color => {
+            const colorDiv = document.createElement('div');
+            colorDiv.className = 'color-option';
+            colorDiv.style.backgroundColor = color.valor;
+            colorDiv.title = color.nombre;
+            colorDiv.dataset.color = color.valor;
+
+            if (color.valor === '#000000') {
+                colorDiv.classList.add('selected');
+            }
+
+            colorDiv.addEventListener('click', function () {
+                document.querySelectorAll('.color-option').forEach(div => div.classList.remove('selected'));
+                this.classList.add('selected');
+                inputSubtitulo.style.color = this.dataset.color;
+            });
+
+            coloresContainer.appendChild(colorDiv);
+
+        });
+
+        let carousel = null;
+
+        const envio = document.getElementById("formulario");
+        const carouselInner = document.getElementById("carouselInner");
+        const carouselContainer = document.getElementById("carouselContainer");
+        const noSlides = document.getElementById("noSlides");
+
+        envio.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const foto = document.getElementById("foto").files[0];
+            const titulo = document.getElementById("titulo").value;
+            const colorSubtitulo = inputSubtitulo.style.color;
+
+            if (foto) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const slide = document.createElement("div");
+                    slide.className = "carousel-item";
+                    if (carouselInner.children.length === 0) {
+                        slide.classList.add("active");
                     }
 
-                    colorDiv.addEventListener('click', function() {
-                        document.querySelectorAll('.color-option').forEach(div => div.classList.remove('selected'));
-                        this.classList.add('selected');
-                        inputSubtitulo.style.color = this.dataset.color;
-                    });
-
-                    coloresContainer.appendChild(colorDiv);
-
-                });
-                
-                let carousel = null;
-                
-                const envio = document.getElementById("formulario");
-                const carouselInner = document.getElementById("carouselInner");
-                const carouselContainer = document.getElementById("carouselContainer");
-                const noSlides = document.getElementById("noSlides");
-
-                envio.addEventListener('submit', function(event){
-                    event.preventDefault(); 
-
-                    const foto = document.getElementById("foto").files[0];
-                    const titulo = document.getElementById("titulo").value;
-                    const colorSubtitulo = inputSubtitulo.style.color;
-
-                    if(foto){
-                        const reader = new FileReader();
-
-                        reader.onload = function(e){
-                            const slide = document.createElement("div");
-                            slide.className = "carousel-item";
-                            if (carouselInner.children.length === 0) {
-                                slide.classList.add("active");
-                            }
-
-                            slide.innerHTML = `
+                    slide.innerHTML = `
                                 <img src="${e.target.result}" class="d-block w-100" alt="${titulo}">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>${titulo}</h5>
@@ -121,42 +126,37 @@
                                 </div>
                             `;
 
-                            carouselInner.appendChild(slide);
+                    carouselInner.appendChild(slide);
 
-                            if (carouselInner.children.length === 1){
-                                carouselContainer.style.display = "block";
-                                noSlides.style.display = "none";
-                            }
-
-                            carousel = new bootstrap.Carousel(document.getElementById('carouselSlides'), {
-                                interval: 2000,
-                                wrap: true
-                            });
-
-                            envio.reset();
-
-                            document.querySelectorAll('.color-option').forEach(div => {
-                                div.classList.remove('selected');
-                                if (div.dataset.color === '#000000') {
-                                    div.classList.add('selected');
-                                }
-                            });
-                            inputSubtitulo.style.color = '#000000';
-
-                            Swal.fire({
-                                icon: 'success',
-                                title: '¡Éxito!',
-                                text: 'La imagen se ha agregado al carrusel.',
-                                confirmButtonText: 'Aceptar'
-                            });
-                        }
-                        reader.readAsDataURL(foto);
+                    if (carouselInner.children.length === 1) {
+                        carouselContainer.style.display = "block";
+                        noSlides.style.display = "none";
                     }
-                });
-            };
-        </script>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    </body>
+                    envio.reset();
+
+                    document.querySelectorAll('.color-option').forEach(div => {
+                        div.classList.remove('selected');
+                        if (div.dataset.color === '#000000') {
+                            div.classList.add('selected');
+                        }
+                    });
+                    inputSubtitulo.style.color = '#000000';
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Éxito!',
+                        text: 'La imagen se ha agregado al carrusel.',
+                        confirmButtonText: 'Aceptar'
+                    });
+                }
+                reader.readAsDataURL(foto);
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
 </html>
